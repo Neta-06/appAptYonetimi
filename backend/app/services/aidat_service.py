@@ -1,4 +1,4 @@
-"""Aidat ve Ã¶deme iÅŸ mantÄ±ÄŸÄ±."""
+"""Aidat ve ÃƒÂ¶deme iÃ…Å¸ mantÃ„Â±Ã„Å¸Ã„Â±."""
 
 import logging
 from datetime import date, datetime
@@ -26,12 +26,12 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================
-# YARDIMCI: Aidat durumunu gÃ¼ncelle
+# YARDIMCI: Aidat durumunu gÃƒÂ¼ncelle
 # ============================================================
 def _durum_guncelle(aidat: Aidat) -> None:
-    """Ã–denen tutara gÃ¶re aidat durumunu yeniden hesaplar."""
+    """Ãƒâ€“denen tutara gÃƒÂ¶re aidat durumunu yeniden hesaplar."""
     if aidat.durum == "IPTAL":
-        return  # iptal edilmiÅŸse dokunma
+        return  # iptal edilmiÃ…Å¸se dokunma
 
     kalan = aidat.tutar - aidat.odenen_tutar
 
@@ -40,7 +40,7 @@ def _durum_guncelle(aidat: Aidat) -> None:
     elif aidat.odenen_tutar > 0:
         aidat.durum = "KISMI_ODENDI"
     else:
-        # Ã–denmemiÅŸ â€” son tarih geÃ§tiyse GECIKMIS
+        # Ãƒâ€“denmemiÃ…Å¸ Ã¢â‚¬â€ son tarih geÃƒÂ§tiyse GECIKMIS
         if aidat.son_odeme_tarihi < date.today():
             aidat.durum = "GECIKMIS"
         else:
@@ -48,7 +48,7 @@ def _durum_guncelle(aidat: Aidat) -> None:
 
 
 # ============================================================
-# LÄ°STELEME
+# LÃ„Â°STELEME
 # ============================================================
 async def list_aidatlar(
     db: AsyncSession,
@@ -62,7 +62,7 @@ async def list_aidatlar(
     limit: int = 100,
     offset: int = 0,
 ) -> list[dict]:
-    """Site aidatlarÄ±nÄ± filtreli listeler."""
+    """Site aidatlarÃ„Â±nÃ„Â± filtreli listeler."""
     stmt = (
         select(Aidat, Daire, Blok, AidatTipi)
         .join(Daire, Daire.daire_no == Aidat.daire_no)
@@ -110,7 +110,7 @@ async def list_aidatlar(
 
 
 async def get_aidat(db: AsyncSession, aidat_no: int, site_no: int) -> Aidat:
-    """Tek aidat detayÄ± (site kontrolÃ¼ zorunlu)."""
+    """Tek aidat detayÃ„Â± (site kontrolÃƒÂ¼ zorunlu)."""
     sonuc = await db.execute(
         select(Aidat).where(
             Aidat.aidat_no == aidat_no,
@@ -124,7 +124,7 @@ async def get_aidat(db: AsyncSession, aidat_no: int, site_no: int) -> Aidat:
 
 
 # ============================================================
-# Ã–ZET Ä°STATÄ°STÄ°KLER
+# Ãƒâ€“ZET Ã„Â°STATÃ„Â°STÃ„Â°KLER
 # ============================================================
 async def get_ozet(
     db: AsyncSession,
@@ -133,7 +133,7 @@ async def get_ozet(
     donem_yil: int | None = None,
     donem_ay: int | None = None,
 ) -> dict:
-    """Site geneli aidat Ã¶zet istatistikleri."""
+    """Site geneli aidat ÃƒÂ¶zet istatistikleri."""
     stmt = select(
         func.count(Aidat.aidat_no).label("toplam_sayi"),
         func.coalesce(func.sum(Aidat.tutar), 0).label("toplam_tahakkuk"),
@@ -180,12 +180,12 @@ async def get_ozet(
 
 
 # ============================================================
-# DAÄ°RE AÄ°DAT GEÃ‡MÄ°ÅÄ°
+# DAÃ„Â°RE AÃ„Â°DAT GEÃƒâ€¡MÃ„Â°Ã…ÂÃ„Â°
 # ============================================================
 async def list_daire_aidat_gecmisi(
     db: AsyncSession, daire_no: int, site_no: int
 ) -> dict:
-    """Bir dairenin tÃ¼m aidat geÃ§miÅŸi + Ã¶zet."""
+    """Bir dairenin tÃƒÂ¼m aidat geÃƒÂ§miÃ…Å¸i + ÃƒÂ¶zet."""
     # Daire bilgisi
     d_sonuc = await db.execute(
         select(Daire, Blok)
@@ -238,10 +238,10 @@ async def list_daire_aidat_gecmisi(
 
 
 # ============================================================
-# GECÄ°KMÄ°Å AÄ°DATLAR
+# GECÃ„Â°KMÃ„Â°Ã…Â AÃ„Â°DATLAR
 # ============================================================
 async def list_gecikmis(db: AsyncSession, site_no: int) -> list[dict]:
-    """GecikmiÅŸ veya kÄ±smi Ã¶denmiÅŸ aidatlar."""
+    """GecikmiÃ…Å¸ veya kÃ„Â±smi ÃƒÂ¶denmiÃ…Å¸ aidatlar."""
     sonuc = await db.execute(
         select(Aidat, Daire, Blok, AidatTipi)
         .join(Daire, Daire.daire_no == Aidat.daire_no)
@@ -276,7 +276,7 @@ async def list_gecikmis(db: AsyncSession, site_no: int) -> list[dict]:
 
 
 # ============================================================
-# Ã–DEME OLUÅTURMA
+# Ãƒâ€“DEME OLUÃ…ÂTURMA
 # ============================================================
 async def create_odeme(
     db: AsyncSession,
@@ -290,25 +290,25 @@ async def create_odeme(
     aciklama: str | None = None,
 ) -> Odeme:
     """
-    Yeni tahsilat kaydÄ± oluÅŸturur.
+    Yeni tahsilat kaydÃ„Â± oluÃ…Å¸turur.
 
-    AdÄ±mlar:
-      1. Kanal ve onay durumunu doÄŸrula
-      2. Her detay iÃ§in aidatÄ± bul, site kontrolÃ¼ yap
-      3. Kalan tutarÄ± kontrol et
-      4. Ã–deme + detaylarÄ± oluÅŸtur
-      5. Her aidatÄ±n odenen_tutar ve durumunu gÃ¼ncelle
+    AdÃ„Â±mlar:
+      1. Kanal ve onay durumunu doÃ„Å¸rula
+      2. Her detay iÃƒÂ§in aidatÃ„Â± bul, site kontrolÃƒÂ¼ yap
+      3. Kalan tutarÃ„Â± kontrol et
+      4. Ãƒâ€“deme + detaylarÃ„Â± oluÃ…Å¸tur
+      5. Her aidatÃ„Â±n odenen_tutar ve durumunu gÃƒÂ¼ncelle
       6. Commit
     """
     if not detaylar:
-        raise IsKuraliHatasi("En az bir aidat detayÄ± gerekli.")
+        raise IsKuraliHatasi("En az bir aidat detayÃ„Â± gerekli.")
 
-    # 1) Kanal kontrolÃ¼
+    # 1) Kanal kontrolÃƒÂ¼
     kanal = await db.get(OdemeKanali, odeme_kanali_no)
     if kanal is None:
         raise BulunamadiHatasi("OdemeKanali", kaynak_id=odeme_kanali_no)
 
-    # 2) DetaylarÄ± hazÄ±rla
+    # 2) DetaylarÃ„Â± hazÃ„Â±rla
     toplam = Decimal("0.00")
     aidat_nesneleri: list[tuple[OdemeDetay, Aidat]] = []
 
@@ -316,7 +316,7 @@ async def create_odeme(
         aidat_no = d.get("aidat_no")
         tutar = Decimal(str(d.get("tutar", 0)))
         if tutar <= 0:
-            raise IsKuraliHatasi(f"Aidat {aidat_no} iÃ§in tutar 0'dan bÃ¼yÃ¼k olmalÄ±.")
+            raise IsKuraliHatasi(f"Aidat {aidat_no} iÃƒÂ§in tutar 0'dan bÃƒÂ¼yÃƒÂ¼k olmalÃ„Â±.")
 
         aidat = await db.get(Aidat, aidat_no)
         if aidat is None:
@@ -325,21 +325,21 @@ async def create_odeme(
             # Cross-tenant
             raise BulunamadiHatasi("Aidat", kaynak_id=aidat_no)
         if aidat.durum == "IPTAL":
-            raise IsKuraliHatasi(f"Aidat {aidat_no} iptal edilmiÅŸ.")
+            raise IsKuraliHatasi(f"Aidat {aidat_no} iptal edilmiÃ…Å¸.")
         if aidat.durum == "ODENDI":
-            raise IsKuraliHatasi(f"Aidat {aidat_no} zaten tamamen Ã¶denmiÅŸ.")
+            raise IsKuraliHatasi(f"Aidat {aidat_no} zaten tamamen ÃƒÂ¶denmiÃ…Å¸.")
 
         kalan = aidat.tutar - aidat.odenen_tutar
         if tutar > kalan:
             raise IsKuraliHatasi(
-                f"Aidat {aidat_no} iÃ§in kalan {kalan} TL; {tutar} TL Ã¶denemez."
+                f"Aidat {aidat_no} iÃƒÂ§in kalan {kalan} TL; {tutar} TL ÃƒÂ¶denemez."
             )
 
         toplam += tutar
         detay = OdemeDetay(aidat_no=aidat_no, tutar=tutar)
         aidat_nesneleri.append((detay, aidat))
 
-    # 3) Ã–deme baÅŸlÄ±ÄŸÄ±
+    # 3) Ãƒâ€“deme baÃ…Å¸lÃ„Â±Ã„Å¸Ã„Â±
     odeme = Odeme(
         site_no=site_no,
         odeme_tarihi=now_utc_naive(),
@@ -355,8 +355,9 @@ async def create_odeme(
     )
     db.add(odeme)
 
-    # 4) DetaylarÄ± ve aidat gÃ¼ncellemelerini baÄŸla
+    # 4) DetaylarÃ„Â± ve aidat gÃƒÂ¼ncellemelerini baÃ„Å¸la
     for detay, aidat in aidat_nesneleri:
+        db.add(detay)
         detay.odeme = odeme
         aidat.odenen_tutar += detay.tutar
         _durum_guncelle(aidat)
@@ -377,7 +378,7 @@ async def create_odeme(
 
 
 # ============================================================
-# Ã–DEME Ä°PTAL
+# Ãƒâ€“DEME Ã„Â°PTAL
 # ============================================================
 async def iptal_odeme(
     db: AsyncSession,
@@ -387,17 +388,17 @@ async def iptal_odeme(
     iptal_nedeni: str,
 ) -> Odeme:
     """
-    Ã–demeyi iptal eder ve baÄŸlÄ± aidatlarÄ± geri alÄ±r.
+    Ãƒâ€“demeyi iptal eder ve baÃ„Å¸lÃ„Â± aidatlarÃ„Â± geri alÃ„Â±r.
 
-    AdÄ±mlar:
-      1. Ã–demeyi bul, site kontrolÃ¼
+    AdÃ„Â±mlar:
+      1. Ãƒâ€“demeyi bul, site kontrolÃƒÂ¼
       2. Zaten iptal mi?
-      3. Her detay iÃ§in aidatÄ±n odenen_tutar'Ä±nÄ± azalt
+      3. Her detay iÃƒÂ§in aidatÃ„Â±n odenen_tutar'Ã„Â±nÃ„Â± azalt
       4. Aidat durumunu yeniden hesapla
-      5. Ã–demeyi REDDEDILDI olarak iÅŸaretle
+      5. Ãƒâ€“demeyi REDDEDILDI olarak iÃ…Å¸aretle
       6. Commit
     """
-    # 1) Ã–demeyi bul
+    # 1) Ãƒâ€“demeyi bul
     sonuc = await db.execute(
         select(Odeme).where(Odeme.odeme_no == odeme_no, Odeme.site_no == site_no)
     )
@@ -409,13 +410,13 @@ async def iptal_odeme(
     if odeme.onay_durum_no == 3:
         raise IsKuraliHatasi("Bu odeme zaten iptal edilmis.")
 
-    # 3) DetaylarÄ± Ã§ek
+    # 3) DetaylarÃ„Â± ÃƒÂ§ek
     d_sonuc = await db.execute(
         select(OdemeDetay).where(OdemeDetay.odeme_no == odeme_no)
     )
     detaylar = list(d_sonuc.scalars().all())
 
-    # 4) AidatlarÄ± geri al
+    # 4) AidatlarÃ„Â± geri al
     for detay in detaylar:
         if detay.aidat_no is None:
             continue
@@ -427,7 +428,7 @@ async def iptal_odeme(
         )
         _durum_guncelle(aidat)
 
-    # 5) Ã–demeyi iptal et
+    # 5) Ãƒâ€“demeyi iptal et
     odeme.onay_durum_no = 3  # REDDEDILDI
     odeme.aciklama = (
         (odeme.aciklama or "") + f" | IPTAL: {iptal_nedeni}"
@@ -441,7 +442,7 @@ async def iptal_odeme(
 
 
 # ============================================================
-# TOPLU AÄ°DAT OLUÅTURMA
+# TOPLU AÃ„Â°DAT OLUÃ…ÂTURMA
 # ============================================================
 async def toplu_aidat_olustur(
     db: AsyncSession,
@@ -455,21 +456,21 @@ async def toplu_aidat_olustur(
     tutar_override: Decimal | None = None,
 ) -> dict:
     """
-    Site geneli toplu aidat borÃ§landÄ±rma.
+    Site geneli toplu aidat borÃƒÂ§landÃ„Â±rma.
 
-    AdÄ±mlar:
-      1. Aidat tipi kontrolÃ¼
-      2. Daileleri seÃ§ (blok filtreli olabilir)
-      3. Her daire iÃ§in aidat tutarÄ±nÄ± belirle (ozel_aidat varsa onu kullan)
-      4. Zaten var olan aidatlarÄ± atla
+    AdÃ„Â±mlar:
+      1. Aidat tipi kontrolÃƒÂ¼
+      2. Daileleri seÃƒÂ§ (blok filtreli olabilir)
+      3. Her daire iÃƒÂ§in aidat tutarÃ„Â±nÃ„Â± belirle (ozel_aidat varsa onu kullan)
+      4. Zaten var olan aidatlarÃ„Â± atla
       5. Commit
     """
-    # 1) Tip kontrolÃ¼
+    # 1) Tip kontrolÃƒÂ¼
     tip = await db.get(AidatTipi, aidat_tipi_no)
     if tip is None:
         raise BulunamadiHatasi("AidatTipi", kaynak_id=aidat_tipi_no)
 
-    # 2) Daireleri seÃ§
+    # 2) Daireleri seÃƒÂ§
     stmt = select(Daire).where(Daire.site_no == site_no)
     if blok_no is not None:
         stmt = stmt.where(Daire.blok_no == blok_no)
@@ -479,12 +480,12 @@ async def toplu_aidat_olustur(
     if not daireler:
         raise IsKuraliHatasi("Bu filtreye uygun daire bulunamadi.")
 
-    # 3) Site varsayÄ±lan aidat tutarÄ±nÄ± al
+    # 3) Site varsayÃ„Â±lan aidat tutarÃ„Â±nÃ„Â± al
     from app.models import Site
     site = await db.get(Site, site_no)
     varsayilan_tutar = site.aylik_aidat if site else Decimal("0.00")
 
-    # 4) Mevcut aidatlarÄ± Ã¶nceden yÃ¼kle (verimlilik)
+    # 4) Mevcut aidatlarÃ„Â± ÃƒÂ¶nceden yÃƒÂ¼kle (verimlilik)
     mevcut_sonuc = await db.execute(
         select(Aidat.daire_no).where(
             Aidat.site_no == site_no,
@@ -504,7 +505,7 @@ async def toplu_aidat_olustur(
             atlanan += 1
             continue
 
-        # Ã–zel aidat varsa onu kullan
+        # Ãƒâ€“zel aidat varsa onu kullan
         if tutar_override is not None:
             tutar = tutar_override
         elif daire.ozel_aidat is not None:

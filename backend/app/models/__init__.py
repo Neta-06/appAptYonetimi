@@ -17,6 +17,12 @@ from app.models.aidat import (
     Aidat, AidatTipi, Odeme, OdemeDetay,
     OdemeKanali, OnayDurum, SiteAidatAyari,
 )
+from app.models.cari import (
+    CariHesap, CariHareket, CariIslemTipi,
+)
+from app.models.gider import (
+    Gider, GiderKalemi, GiderKategori, Gelir,
+)
 
 __all__ = [
     # Identity
@@ -32,4 +38,8 @@ __all__ = [
     # Aidat
     "Aidat", "AidatTipi", "Odeme", "OdemeDetay",
     "OdemeKanali", "OnayDurum", "SiteAidatAyari",
+    # Cari
+    "CariHesap", "CariHareket", "CariIslemTipi",
+    # Gider
+    "Gider", "GiderKalemi", "GiderKategori", "Gelir",
 ]
