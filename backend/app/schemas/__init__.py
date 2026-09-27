@@ -1,4 +1,4 @@
-﻿"""Pydantic şemaları — API giriş/çıkış veri modelleri."""
+"""Pydantic şemaları — API giriş/çıkış veri modelleri."""
 
 from app.schemas.auth import (
     KullaniciRegisterRequest,
@@ -18,22 +18,20 @@ from app.schemas.site import (
     UyeEkleRequest,
     UyeGuncelleRequest,
 )
+from app.schemas.daire import (
+    DaireOzetResponse,
+    DaireResponse,
+    BlokResponse,
+    DaireSakinResponse,
+    DaireSayacResponse,
+)
 
 __all__ = [
-    # Auth
-    "KullaniciRegisterRequest",
-    "KullaniciLoginRequest",
-    "TokenResponse",
-    "TokenRefreshRequest",
-    "KullaniciResponse",
-    "KullaniciSiteResponse",
+    "KullaniciRegisterRequest", "KullaniciLoginRequest", "TokenResponse",
+    "TokenRefreshRequest", "KullaniciResponse", "KullaniciSiteResponse",
     "LogoutRequest",
-    # Site
-    "SiteTipiResponse",
-    "KullaniciSiteOzet",
-    "SiteResponse",
-    "SiteUyeResponse",
-    "AktifSiteResponse",
-    "UyeEkleRequest",
-    "UyeGuncelleRequest",
+    "SiteTipiResponse", "KullaniciSiteOzet", "SiteResponse",
+    "SiteUyeResponse", "AktifSiteResponse", "UyeEkleRequest", "UyeGuncelleRequest",
+    "DaireOzetResponse", "DaireResponse", "BlokResponse",
+    "DaireSakinResponse", "DaireSayacResponse",
 ]

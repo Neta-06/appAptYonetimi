@@ -1,53 +1,28 @@
-"""
-SQLAlchemy modelleri.
-
-Tüm modeller burada toplanır. Böylece:
-  - Alembic autogenerate tüm modelleri görür
-  - Uygulama `from app.models import Kullanici` diyebilir
-"""
+"""SQLAlchemy modelleri."""
 
 from app.models.identity import (
-    # RBAC
-    Rol,
-    RolYetki,
-    Yetki,
-    # Firma
-    YonetimFirmasi,
-    # Site
-    Site,
-    SiteTipi,
-    # Kullanıcı ve güvenlik
-    AuditLog,
-    Kullanici,
-    KullaniciMfaYedekKod,
-    KullaniciSite,
-    LoginDenemesi,
-    Oturum,
-    ParolaSifirlamaToken,
-    # KVKK
-    KvkkMetin,
-    KvkkOnay,
+    Rol, Yetki, RolYetki, YonetimFirmasi, Site, SiteTipi,
+    Kullanici, KullaniciMfaYedekKod, KullaniciSite,
+    Oturum, ParolaSifirlamaToken, LoginDenemesi,
+    AuditLog, KvkkMetin, KvkkOnay,
+)
+from app.models.daire import (
+    Blok, Daire, DaireTipi, DaireDoluluk, DaireKullanim, DaireSakin,
+)
+from app.models.sayac import (
+    SayacBirim, SayacTuru, DaireSayaci, SayacOkuma,
+    SayacFaturasi, SayacFaturaPayi,
 )
 
 __all__ = [
-    # RBAC
-    "Rol",
-    "Yetki",
-    "RolYetki",
-    # Firma
-    "YonetimFirmasi",
-    # Site
-    "Site",
-    "SiteTipi",
-    # Kullanıcı
-    "Kullanici",
-    "KullaniciMfaYedekKod",
-    "KullaniciSite",
-    "Oturum",
-    "ParolaSifirlamaToken",
-    "LoginDenemesi",
-    "AuditLog",
-    # KVKK
-    "KvkkMetin",
-    "KvkkOnay",
+    # Identity
+    "Rol", "Yetki", "RolYetki", "YonetimFirmasi", "Site", "SiteTipi",
+    "Kullanici", "KullaniciMfaYedekKod", "KullaniciSite",
+    "Oturum", "ParolaSifirlamaToken", "LoginDenemesi",
+    "AuditLog", "KvkkMetin", "KvkkOnay",
+    # Daire
+    "Blok", "Daire", "DaireTipi", "DaireDoluluk", "DaireKullanim", "DaireSakin",
+    # Sayac
+    "SayacBirim", "SayacTuru", "DaireSayaci", "SayacOkuma",
+    "SayacFaturasi", "SayacFaturaPayi",
 ]
