@@ -25,13 +25,41 @@ from app.schemas.daire import (
     DaireSakinResponse,
     DaireSayacResponse,
 )
+from app.schemas.aidat import (
+    AidatOzetResponse,
+    AidatResponse,
+    AidatOzetIstatistik,
+    DaireAidatGecmisi,
+    OdemeDetayResponse,
+    OdemeResponse,
+    OdemeDetayliResponse,
+    OdemeDetayCreate,
+    OdemeCreateRequest,
+    OdemeIptalRequest,
+    AidatOlusturRequest,
+    TopluAidatOlusturRequest,
+    TopluAidatSonuc,
+    AidatTipiResponse,
+    OdemeKanaliResponse,
+    OnayDurumResponse,
+)
 
 __all__ = [
+    # Auth
     "KullaniciRegisterRequest", "KullaniciLoginRequest", "TokenResponse",
     "TokenRefreshRequest", "KullaniciResponse", "KullaniciSiteResponse",
     "LogoutRequest",
+    # Site
     "SiteTipiResponse", "KullaniciSiteOzet", "SiteResponse",
     "SiteUyeResponse", "AktifSiteResponse", "UyeEkleRequest", "UyeGuncelleRequest",
+    # Daire
     "DaireOzetResponse", "DaireResponse", "BlokResponse",
     "DaireSakinResponse", "DaireSayacResponse",
+    # Aidat
+    "AidatOzetResponse", "AidatResponse", "AidatOzetIstatistik",
+    "DaireAidatGecmisi",
+    "OdemeDetayResponse", "OdemeResponse", "OdemeDetayliResponse",
+    "OdemeDetayCreate", "OdemeCreateRequest", "OdemeIptalRequest",
+    "AidatOlusturRequest", "TopluAidatOlusturRequest", "TopluAidatSonuc",
+    "AidatTipiResponse", "OdemeKanaliResponse", "OnayDurumResponse",
 ]

@@ -13,6 +13,10 @@ from app.models.sayac import (
     SayacBirim, SayacTuru, DaireSayaci, SayacOkuma,
     SayacFaturasi, SayacFaturaPayi,
 )
+from app.models.aidat import (
+    Aidat, AidatTipi, Odeme, OdemeDetay,
+    OdemeKanali, OnayDurum, SiteAidatAyari,
+)
 
 __all__ = [
     # Identity
@@ -25,4 +29,7 @@ __all__ = [
     # Sayac
     "SayacBirim", "SayacTuru", "DaireSayaci", "SayacOkuma",
     "SayacFaturasi", "SayacFaturaPayi",
+    # Aidat
+    "Aidat", "AidatTipi", "Odeme", "OdemeDetay",
+    "OdemeKanali", "OnayDurum", "SiteAidatAyari",
 ]
