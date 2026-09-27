@@ -1,0 +1,21 @@
+# ============================================================
+#  appApartman - Geliştirme Bağımlılıkları
+#  Bu dosya requirements.txt'i içerir + test & kalite araçları
+# ============================================================
+
+-r requirements.txt
+
+# --- Test ---
+pytest>=8.3.0
+pytest-asyncio>=1.4.0
+pytest-cov>=6.0.0
+faker>=30.0.0
+
+# --- Kod Kalitesi ---
+ruff>=0.16.8
+mypy>=1.14.0
+bandit>=1.8.0
+safety>=3.3.0
+
+# --- Geliştirme Yardımcıları ---
+pre-commit>=4.0.0

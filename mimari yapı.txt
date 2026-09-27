@@ -1,0 +1,101 @@
+appApartman/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # FastAPI uygulama girişi
+│   │   ├── core/
+│   │   │   ├── config.py        # Pydantic Settings (.env)
+│   │   │   ├── security.py      # Hash, JWT, AES
+│   │   │   ├── rbac.py          # Yetki bağımlılıkları
+│   │   │   └── exceptions.py    # Merkezi hata yönetimi
+│   │   ├── db/
+│   │   │   ├── base.py          # Declarative Base
+│   │   │   ├── session.py       # Async engine + session
+│   │   │   └── init_db.py       # Seed / başlangıç verisi
+│   │   ├── models/              # SQLAlchemy modelleri
+│   │   │   ├── identity.py
+│   │   │   ├── aidat.py
+│   │   │   ├── sayac.py
+│   │   │   ├── cari.py
+│   │   │   ├── gider_gelir.py
+│   │   │   ├── is_takip.py
+│   │   │   └── bildirim.py
+│   │   ├── schemas/             # Pydantic şemaları
+│   │   ├── services/            # İş mantığı
+│   │   ├── api/
+│   │   │   └── v1/
+│   │   │       ├── endpoints/
+│   │   │       └── router.py
+│   │   └── middleware/
+│   │       ├── security_headers.py
+│   │       ├── rate_limit.py
+│   │       └── request_id.py
+│   ├── alembic/
+│   │   ├── versions/
+│   │   └── env.py
+│   ├── tests/
+│   │   ├── unit/
+│   │   ├── integration/
+│   │   └── conftest.py
+│   ├── requirements.txt
+│   ├── requirements-dev.txt
+│   ├── .env.example
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   └── alembic.ini
+└── mobile/                      # (React Native / Flutter)
+
+
+komut ile
+
+$dirs = @(
+    "appApartman/mobile",
+    "appApartman/backend/alembic/versions",
+    "appApartman/backend/tests/unit",
+    "appApartman/backend/tests/integration",
+    "appApartman/backend/app/core",
+    "appApartman/backend/app/db",
+    "appApartman/backend/app/models",
+    "appApartman/backend/app/schemas",
+    "appApartman/backend/app/services",
+    "appApartman/backend/app/api/v1/endpoints",
+    "appApartman/backend/app/middleware"
+);
+$files = @(
+    "appApartman/backend/requirements.txt",
+    "appApartman/backend/requirements-dev.txt",
+    "appApartman/backend/.env.example",
+    "appApartman/backend/Dockerfile",
+    "appApartman/backend/docker-compose.yml",
+    "appApartman/backend/alembic.ini",
+    "appApartman/backend/alembic/env.py",
+    "appApartman/backend/tests/conftest.py",
+    "appApartman/backend/app/__init__.py",
+    "appApartman/backend/app/main.py",
+    "appApartman/backend/app/core/__init__.py",
+    "appApartman/backend/app/core/config.py",
+    "appApartman/backend/app/core/security.py",
+    "appApartman/backend/app/core/rbac.py",
+    "appApartman/backend/app/core/exceptions.py",
+    "appApartman/backend/app/db/__init__.py",
+    "appApartman/backend/app/db/base.py",
+    "appApartman/backend/app/db/session.py",
+    "appApartman/backend/app/db/init_db.py",
+    "appApartman/backend/app/models/__init__.py",
+    "appApartman/backend/app/models/identity.py",
+    "appApartman/backend/app/models/aidat.py",
+    "appApartman/backend/app/models/sayac.py",
+    "appApartman/backend/app/models/cari.py",
+    "appApartman/backend/app/models/gider_gelir.py",
+    "appApartman/backend/app/models/is_takip.py",
+    "appApartman/backend/app/models/bildirim.py",
+    "appApartman/backend/app/api/__init__.py",
+    "appApartman/backend/app/api/v1/__init__.py",
+    "appApartman/backend/app/api/v1/router.py",
+    "appApartman/backend/app/middleware/__init__.py",
+    "appApartman/backend/app/middleware/security_headers.py",
+    "appApartman/backend/app/middleware/rate_limit.py",
+    "appApartman/backend/app/middleware/request_id.py"
+);
+foreach ($dir in $dirs) { New-Item -ItemType Directory -Force -Path $dir | Out-Null };
+foreach ($file in $files) { New-Item -ItemType File -Force -Path $file | Out-Null }

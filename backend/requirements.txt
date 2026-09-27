@@ -1,0 +1,32 @@
+
+# --- Web Framework ---
+fastapi>=0.141.1
+uvicorn[standard]>=0.38.0
+
+# --- Veritabanı (Async) ---
+sqlalchemy[asyncio]>=2.0.54
+asyncmy>=0.2.14
+
+# --- Migrasyon ---
+alembic>=1.17.2
+
+# --- Doğrulama & Ayarlar ---
+pydantic>=2.12.0
+pydantic-settings>=2.12.0
+email-validator>=2.2.0
+
+# --- Güvenlik ---
+argon2-cffi>=25.1.0          # Argon2id parola hash
+python-jose[cryptography]>=3.5.0  # JWT
+passlib>=1.7.4               # Hash yardımcıları
+python-multipart>=0.0.20     # Form verisi
+
+# --- Arka Plan Görevleri ---
+celery>=5.5.3
+redis>=7.0.1
+
+# --- HTTP İstemcisi (dış API çağrıları için) ---
+httpx>=0.28.0
+
+# --- Üretim Sunucusu ---
+gunicorn>=23.0.0
