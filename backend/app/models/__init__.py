@@ -38,6 +38,10 @@ from app.models.toplanti import (
 from app.models.demirbas import (
     Demirbas, DemirbasHareket,
 )
+from app.models.personel import (
+    Personel, PersonelSite, PersonelIzin,
+    PersonelPuantaj, PersonelMaasOdeme,
+)
 
 __all__ = [
     "Rol", "Yetki", "RolYetki", "YonetimFirmasi", "Site", "SiteTipi",
@@ -56,4 +60,6 @@ __all__ = [
     "Anket", "AnketSecenegi", "AnketOyHakki", "AnketOyu",
     "Toplanti", "ToplantiKatilimci", "ToplantiKarar",
     "Demirbas", "DemirbasHareket",
+    "Personel", "PersonelSite", "PersonelIzin",
+    "PersonelPuantaj", "PersonelMaasOdeme",
 ]

@@ -82,6 +82,17 @@ from app.schemas.demirbas import (
     DemirbasCreateRequest, DemirbasUpdateRequest,
     DemirbasDurumDegistirRequest, HareketEkleRequest,
 )
+from app.schemas.personel import (
+    PersonelSiteResponse, PersonelIzinResponse,
+    PersonelPuantajResponse, PersonelMaasOdemeResponse,
+    PersonelOzetResponse, PersonelResponse, PersonelDetayResponse,
+    GorevDagilim, PersonelOzetStats,
+    PersonelCreateRequest, PersonelUpdateRequest, PersonelCikisRequest,
+    PersonelSiteEkleRequest,
+    PersonelIzinCreateRequest, PersonelIzinOnayRequest,
+    PersonelPuantajCreateRequest, PersonelPuantajAylikOzet,
+    PersonelMaasCreateRequest, PersonelMaasUpdateRequest,
+)
 
 __all__ = [
     # Auth
@@ -154,4 +165,14 @@ __all__ = [
     "DemirbasResponse", "DemirbasDetayResponse", "DemirbasOzetStats",
     "DemirbasCreateRequest", "DemirbasUpdateRequest",
     "DemirbasDurumDegistirRequest", "HareketEkleRequest",
+    # Personel
+    "PersonelSiteResponse", "PersonelIzinResponse",
+    "PersonelPuantajResponse", "PersonelMaasOdemeResponse",
+    "PersonelOzetResponse", "PersonelResponse", "PersonelDetayResponse",
+    "GorevDagilim", "PersonelOzetStats",
+    "PersonelCreateRequest", "PersonelUpdateRequest", "PersonelCikisRequest",
+    "PersonelSiteEkleRequest",
+    "PersonelIzinCreateRequest", "PersonelIzinOnayRequest",
+    "PersonelPuantajCreateRequest", "PersonelPuantajAylikOzet",
+    "PersonelMaasCreateRequest", "PersonelMaasUpdateRequest",
 ]

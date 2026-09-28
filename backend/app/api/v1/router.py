@@ -11,6 +11,7 @@ from app.api.v1.endpoints import (
     duyuru,
     gider,
     is_emri,
+    personel,
     raporlar,
     sakin,
     sayac,
@@ -33,3 +34,4 @@ api_router.include_router(sakin.router)
 api_router.include_router(anket.router)
 api_router.include_router(toplanti.router)
 api_router.include_router(demirbas.router)
+api_router.include_router(personel.router)
