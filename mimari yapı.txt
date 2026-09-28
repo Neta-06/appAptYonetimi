@@ -46,7 +46,8 @@ appApartman/
 └── mobile/                      # (React Native / Flutter)
 
 
-komut ile
+komut ile # Ctrl+C sonra:
+uvicorn app.main:app --reload
 
 $dirs = @(
     "appApartman/mobile",

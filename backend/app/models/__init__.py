@@ -23,23 +23,33 @@ from app.models.cari import (
 from app.models.gider import (
     Gider, GiderKalemi, GiderKategori, Gelir,
 )
+from app.models.duyuru import (
+    Duyuru, DuyuruOkuma,
+)
+from app.models.is_takip import (
+    IsOncelik, IsDurum, IsEmri, IsEmriGuncelleme, IsEmriMalzeme,
+)
+from app.models.anket import (
+    Anket, AnketSecenegi, AnketOyHakki, AnketOyu,
+)
+from app.models.toplanti import (
+    Toplanti, ToplantiKatilimci, ToplantiKarar,
+)
 
 __all__ = [
-    # Identity
     "Rol", "Yetki", "RolYetki", "YonetimFirmasi", "Site", "SiteTipi",
     "Kullanici", "KullaniciMfaYedekKod", "KullaniciSite",
     "Oturum", "ParolaSifirlamaToken", "LoginDenemesi",
     "AuditLog", "KvkkMetin", "KvkkOnay",
-    # Daire
     "Blok", "Daire", "DaireTipi", "DaireDoluluk", "DaireKullanim", "DaireSakin",
-    # Sayac
     "SayacBirim", "SayacTuru", "DaireSayaci", "SayacOkuma",
     "SayacFaturasi", "SayacFaturaPayi",
-    # Aidat
     "Aidat", "AidatTipi", "Odeme", "OdemeDetay",
     "OdemeKanali", "OnayDurum", "SiteAidatAyari",
-    # Cari
     "CariHesap", "CariHareket", "CariIslemTipi",
-    # Gider
     "Gider", "GiderKalemi", "GiderKategori", "Gelir",
+    "Duyuru", "DuyuruOkuma",
+    "IsOncelik", "IsDurum", "IsEmri", "IsEmriGuncelleme", "IsEmriMalzeme",
+    "Anket", "AnketSecenegi", "AnketOyHakki", "AnketOyu",
+    "Toplanti", "ToplantiKatilimci", "ToplantiKarar",
 ]

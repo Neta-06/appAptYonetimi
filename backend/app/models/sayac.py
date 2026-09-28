@@ -100,6 +100,9 @@ class SayacFaturasi(Base):
     toplam_tutar: Mapped[float] = mapped_column(Numeric(14, 2), nullable=False)
     ortak_alan_tutar: Mapped[float] = mapped_column(Numeric(14, 2), nullable=False, default=0)
     dagitim_sekli: Mapped[str] = mapped_column(String(20), nullable=False, default="TUKETIME_GORE")
+    olusturma_tarihi: Mapped[datetime] = mapped_column(
+        DateTime, nullable=False, server_default=func.current_timestamp()
+    )
 
     __table_args__ = (
         UniqueConstraint("site_no", "sayac_turu_no", "donem_yil", "donem_ay", name="uq_fatura_donem"),
