@@ -76,6 +76,12 @@ from app.schemas.toplanti import (
     ToplantiDurumDegistirRequest,
     KatilimciEkleRequest, KatilimciGuncelleRequest, KararEkleRequest,
 )
+from app.schemas.demirbas import (
+    DemirbasHareketResponse, DemirbasOzetResponse,
+    DemirbasResponse, DemirbasDetayResponse, DemirbasOzetStats,
+    DemirbasCreateRequest, DemirbasUpdateRequest,
+    DemirbasDurumDegistirRequest, HareketEkleRequest,
+)
 
 __all__ = [
     # Auth
@@ -143,4 +149,9 @@ __all__ = [
     "ToplantiCreateRequest", "ToplantiUpdateRequest",
     "ToplantiDurumDegistirRequest",
     "KatilimciEkleRequest", "KatilimciGuncelleRequest", "KararEkleRequest",
+    # Demirbas
+    "DemirbasHareketResponse", "DemirbasOzetResponse",
+    "DemirbasResponse", "DemirbasDetayResponse", "DemirbasOzetStats",
+    "DemirbasCreateRequest", "DemirbasUpdateRequest",
+    "DemirbasDurumDegistirRequest", "HareketEkleRequest",
 ]
